@@ -21,6 +21,11 @@ const App = () => {
             <Header>
                 <Input placeholderText={"What Do You Need Today"} className={"todo-input"} callback={input}/>
                 <Button text={"Add"} className={"add-button"} type={'text'} callback={() => {
+                    if( input.current.value == '' ){
+                        alert('Todo Field Must Not Be Empty');
+                        return;
+                    }
+                    
                     setTodo((previousValue) => {
                         let inputValue = {
                             key:previousValue.length,
@@ -28,7 +33,7 @@ const App = () => {
                         };
                         input.current.value = '';
                         return [...previousValue, inputValue]
-                    })
+                    });
                 }}/>
             </Header>
             <Card className={'card-list'}>
