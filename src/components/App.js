@@ -19,7 +19,7 @@ const App = () => {
     return (
         <Card className={'card-body'}>
             <Header>
-                <Input placeholderText={"What Do You Need Today"} className={"todo-input"} callback={input}/>
+                <Input placeholderText={"What Do You Need Today"} className={"todo-input"} ref={input}/>
                 <Button text={"Add"} className={"add-button"} type={'text'} callback={() => {
                     if( input.current.value == '' ){
                         alert('Todo Field Must Not Be Empty');
@@ -37,13 +37,7 @@ const App = () => {
                 }}/>
             </Header>
             <Card className={'card-list'}>
-                { todos.length > 0 && todos.map((object) => {
-                    return <List index={object.key}> 
-                                {
-                                    object.value
-                                }
-                           </List>
-                })}
+               <List todos={todos}/>
             </Card>
         </Card>
     );

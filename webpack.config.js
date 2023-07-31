@@ -12,7 +12,13 @@ const webpackConfig = (env) => {
             ['app']: ['./src/index.js'], // Define entry as an array of paths or single path
         },
         devServer: {
-            allowedHosts: 'auto'
+            allowedHosts: 'auto',
+            devMiddleware:{
+                writeToDisk: true
+            },
+            static:{
+                directory:__dirname
+            }
         },
         devtool: 'source-map',
         output: {
@@ -23,6 +29,10 @@ const webpackConfig = (env) => {
             new CleanWebpackPlugin(),
             new MiniCSSExtractPlugin({
                 filename: "[name].css"
+            }),
+            new plugins.WriteFilePlugin({
+                // exclude hot-update files
+                test: /^(?!.*(hot)).*/,
             }),
         ],
         module: {

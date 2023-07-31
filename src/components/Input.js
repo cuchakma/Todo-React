@@ -1,9 +1,9 @@
 import React from "react";
 
-const Input = ( { placeholderText, className, callback } ) => {
+const Input = ( { placeholderText, className }, ref ) => {
     return (
-        <input placeholder={placeholderText} className={className} ref={callback}/>
+        <input placeholder={placeholderText} className={className} ref={ref}/>
     )
 }
 
-export default Input;
+export default React.forwardRef(Input);

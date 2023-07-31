@@ -1,1 +1,4 @@
 /node_modules
+/assets
+!/assets/*.js
+!/assets/*.css
